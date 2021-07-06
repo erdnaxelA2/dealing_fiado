@@ -1,0 +1,14 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block body %}
+    <div>
+        <br>
+        {% for ponto in pontos %}
+            <div>
+                <h1>{{ ponto.entrada }} - {{ ponto.saida }}</h1>
+            </div>
+            {% empty %}
+                <p>Nenhum ponto registrado.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

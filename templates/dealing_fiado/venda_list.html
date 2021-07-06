@@ -1,0 +1,26 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block title %}vendas{% endblock %}
+
+{% block body %}
+    <div>
+        <div>
+            <a href="{% url 'form_venda' %}">Nova venda</a>
+        </div>
+        {% for venda in vendas %}
+            <a href="{% url 'detail_venda' venda.id %}">
+                <h1>{{ venda.cliente }}</h1>
+            </a>
+            <div>
+                <span>{{ venda.data_inicial|date:'H:i d-m-Y' }}</span>
+                <br>
+                {% if not venda.pago %}
+                    <span>{{ venda.data_final|date:'H:i d-m-Y' }}</span>
+                {% endif %}
+            </div>
+            <p>R$ {{ venda.valor }}</p>
+            {% empty %}
+                <p>Nenhuma venda registrada.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block body %}
+    <form method="POST">
+        {% csrf_token %}
+
+        <div>
+            {{ form.nome.errors }}
+            <p>
+                {{ form.nome.label_tag }}
+                {{ form.nome }}
+            </p>
+        </div>
+
+        <div>
+            {{ form.compras_fiados.errors }}
+            <p>
+                {{ form.compras_fiados.label_tag }} (opcional)
+                <a href="{% url 'form_venda' %}">Criar venda</a>
+            </p>
+            {{ form.compras_fiados }}
+        </div>
+
+        <input type="submit">
+    </form>
+{% endblock %}

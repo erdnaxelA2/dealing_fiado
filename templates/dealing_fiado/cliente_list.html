@@ -1,0 +1,18 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block title %}clientes{% endblock %}
+
+{% block body %}
+    <div>
+        <div>
+            <a href="{% url 'form_cliente' %}">Novo cliente</a>
+        </div>
+        {% for cliente in clientes %}
+            <a href="{% url 'detail_cliente' cliente.id %}">
+                <h1>{{ cliente.nome }}</h1>
+            </a>
+            {% empty %}
+                <p>Nenhum cliente registrado.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block title %}{{ cliente.nome }}{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>{{ cliente.nome }}</h1>
+        <div>
+            <a href="{% url 'update_cliente' cliente.id %}">Editar</a>
+            <a href="{% url 'delete_cliente' cliente.id %}">Deletar</a>
+        </div>
+        <ol>
+            {% for venda in cliente.compras_fiados.all %}
+                <a href="{% url 'detail_venda' venda.id %}"><li>{{ cliente.nome }} - {{ venda.valor }}</li></a>
+            {% empty %}
+                <li>Nenhuma compra/fiado registrado.</li>
+            {% endfor %}
+        </ol>
+    </div>
+    <a href="{% url 'list_cliente' %}">Voltar</a>
+{% endblock %}

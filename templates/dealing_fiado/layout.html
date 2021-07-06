@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiado - {% block title %}principal{% endblock %}</title>
+</head>
+<body>
+    <h1>Lembrando dos seus Fiados</h1>
+    <hr>
+    <nav>
+        <ul>
+            <a href="{% url 'index' %}"><li>Principal</li></a>
+            <ul>
+                <a href="{% url 'list_venda' %}"><li>Vendas</li></a>
+                <a href="{% url 'list_produto' %}"><li>Produtos</li></a>
+                <a href="{% url 'list_cliente' %}"><li>Clientes</li></a>
+                <a href="{% url 'list_empregado' %}"><li>Empregados</li></a>
+            </ul>
+        </ul>
+    </nav>
+    {% block body %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block body %}
+    <h1>{{ empregado.nome }}</h1>
+    <div>
+        <a href="{% url 'update_empregado' empregado.id %}">Editar</a>
+        <a href="{% url 'delete_empregado' empregado.id %}">Deletar</a>
+    </div>
+    <br>
+    <div>
+        <a href="{% url 'form_folha' %}">Gerar folha</a>
+        <ol>
+            {% for folha in empregado.folhas.all %}
+                <a href="{% url 'detail_folha' folha.id %}">
+                    <li>{{ folha.data_inicial }}</li>
+                </a>
+            {% empty %}
+                <p>Nenhuma folha encontrada.</p>
+            {% endfor %}
+        </ol>
+    </div>
+    <a href="{% url 'list_empregado' %}">Voltar</a>
+{% endblock %}

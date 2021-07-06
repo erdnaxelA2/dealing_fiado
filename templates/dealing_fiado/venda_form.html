@@ -1,0 +1,55 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block body %}
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        <div>
+            {{ form.cliente.errors }}
+            <p>
+                {{ form.cliente.label_tag }}
+                {{ form.cliente }}
+            </p>
+        </div>
+        <div>
+            {{ form.produtos.errors }}
+            <p>
+                {{ form.produtos.label_tag }}
+                <a href="{% url 'form_produto' %}">Criar produto</a>
+            </p>
+            {{ form.produtos }}
+        </div>
+        <div>
+            {{ form.quantidades.errors }}
+            <p>
+                {{ form.quantidades.label_tag }}
+                {{ form.quantidades }}
+            </p>
+        </div>
+        <div>
+            {{ form.valor.errors }}
+            <p>
+                {{ form.valor.label_tag }}
+                {{ form.valor }}
+            </p>
+        </div>
+        <div>
+            {{ form.pago.errors }}
+            <p>
+                {{ form.pago.label_tag }}
+                {{ form.pago }}
+            </p>
+        </div>
+        <div>
+            {{ form.data_final.errors }}
+            <p>
+                {{ form.data_final.label_tag }}
+                {{ form.data_final }}
+            </p>
+        </div>
+
+        <input type="submit">
+    </form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block body %}
+    <div>
+        <div>
+            <a href="{% url 'form_folha' %}">Nova folha</a>
+        </div>
+        {% for folha in folhas %}
+            <div>
+                <a href="{% url 'detail_folha' folha.id %}">
+                    <h2>Emp.: {{ folha.empregado.nome }} - Inicio: {{ folha.data_inicial }}</h2>
+                </a>
+            </div>
+            {% empty %}
+                <p>Nenhuma folha registrada.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

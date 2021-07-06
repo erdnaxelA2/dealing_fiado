@@ -1,0 +1,10 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block body %}
+    <h2>Deseja excluir este empregado?</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit">
+        <a href="{% url 'detail_empregado' empregado.id %}">Cancelar</a>
+    </form>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block body %}
+    <h2>Deseja deletar este produto?</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit">
+        <a href="{% url 'detail_produto' produto.id %}">Cancelar</a>
+    </form>
+{% endblock %}

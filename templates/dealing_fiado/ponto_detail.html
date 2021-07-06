@@ -1,0 +1,29 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block body %}
+    <div>
+        <a href="{% url 'update_ponto' ponto.id %}">Editar</a>
+        <a href="{% url 'delete_ponto' ponto.id %}">Deletar</a>
+    </div>
+    <br>
+    <div>
+        <a href="{% url 'form_ponto' %}">Gerar ponto</a>
+        <table>
+            <thead>
+                <th scope="row">Entrada</th>
+                <th scope="row">Intervalo</th>
+                <th scope="row">Retorno</th>
+                <th scope="row">Saída</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ ponto.entrada }}</td>
+                    <td>{{ ponto.intervalo }}</td>
+                    <td>{{ ponto.retorno }}</td>
+                    <td>{{ ponto.saida }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="{% url 'list_ponto' %}">Voltar</a>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block body %}
+    <div>
+        <a href="{% url 'form_empregado' %}">Novo empregado</a>
+        <br>
+        {% for empregado in empregados %}
+            <div>
+                <a href="{% url 'detail_empregado' empregado.id %}">
+                    <h1>{{ empregado.nome }}</h1>
+                </a>
+            </div>
+            {% empty %}
+                <p>Nenhum empregado registrado.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

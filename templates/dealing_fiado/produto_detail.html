@@ -1,0 +1,11 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block body %}
+    <h1>{{ produto.nome }}</h1>
+    <div>
+        <a href="{% url 'update_produto' produto.id %}">Editar</a>
+        <a href="{% url 'delete_produto' produto.id %}">Deletar</a>
+    </div>
+    <p>R$ {{ produto.valor }}</p>
+    <a href="{% url 'list_produto' %}">Voltar</a>
+{% endblock %}

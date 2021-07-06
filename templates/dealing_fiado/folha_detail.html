@@ -1,0 +1,37 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block body %}
+    <h1>{{ folha.empregado.nome }}</h1>
+    <div>
+        <a href="{% url 'update_folha' folha.id %}">Editar</a>
+        <a href="{% url 'delete_folha' folha.id %}">Deletar</a>
+    </div>
+    <br>
+    <a href="{% url 'folha_pontos' folha.id %}">Gerar ponto</a>
+    <hr>
+    <div>
+        <table>
+            <thead>
+                <th scope="row">Entrada</th>
+                <th scope="row">Intervalo</th>
+                <th scope="row">Retorno</th>
+                <th scope="row">Saída</th>
+            </thead>
+            <tbody>
+                {% for ponto in folha.pontos.all %}
+                    <tr>
+                        <td>{{ ponto.entrada }}</td>
+                        <td>{{ ponto.intervalo }}</td>
+                        <td>{{ ponto.retorno }}</td>
+                        <td>{{ ponto.saida }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">Nenhum ponto assinado.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{% url 'list_folha' %}">Voltar</a>
+{% endblock %}

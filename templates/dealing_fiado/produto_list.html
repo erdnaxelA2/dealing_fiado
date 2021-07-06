@@ -1,0 +1,19 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block body %}
+    <div>
+        <div>
+            <a href="{% url 'form_produto' %}">Novo produto</a>
+        </div>
+        {% for produto in produtos %}
+            <div>
+                <a href="{% url 'detail_produto' produto.id %}">
+                    <h1>{{ produto.nome }}</h1>
+                </a>
+                R$ {{ produto.valor }}
+            </div>
+            {% empty %}
+                <p>Nenhum produto registrado.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

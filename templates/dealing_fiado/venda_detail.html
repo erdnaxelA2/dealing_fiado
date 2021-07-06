@@ -1,0 +1,31 @@
+{% extends 'dealing_fiado/layout.html' %}
+
+{% block title %}venda{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>{{ venda.cliente }}</h1>
+        <div>
+            <a href="{% url 'update_venda' venda.id %}">Editar</a>
+            <a href="{% url 'delete_venda' venda.id %}">Deletar</a>
+        </div>
+        <div>
+            <p><strong>Data de registro: </strong>{{ venda.data_inicial|date:'H:i d-m-Y' }}</p>
+            {% if not venda.pago %}
+                <p><strong>Data de pagamento: </strong>{{ venda.data_final|date:'H:i d-m-Y' }}</p>
+            {% else %}
+                <p><strong>Data de pagamento: </strong>Mesmo dia de registro</p>
+            {% endif %}
+        </div>
+        <div>
+            {% for mercadoria in venda.mercadorias.all %}
+                <p>{{ mercadoria.nome }} - {{ mercadoria.valor }}</p>
+            {% empty %}
+                <p>Nenhum mercadoria registrada.</p>
+            {% endfor %}
+        </div>
+        <hr>
+        <p>R$ {{ venda.valor }}</p>
+    </div>
+    <a href="{% url 'list_venda' %}">Voltar</a>
+{% endblock %}
